@@ -143,7 +143,9 @@ x_travel_MiniKit = 6.30  # AxiDraw MiniKit: X Carriage travel in inches.        
 y_travel_MiniKit = 4.00   # AxiDraw MiniKit: Y Carriage travel in inches.               Default: 101.6 mm = 4.00 inches
 
 
-native_res_factor = 1016.0  # Motor resolution calculation factor, steps per inch, and used in conversions. Default: 1016.0
+#XXX change for idraw
+#native_res_factor = 1016.0  # Motor resolution calculation factor, steps per inch, and used in conversions. Default: 1016.0
+native_res_factor = 1270.0
 # Note that resolution is defined along native (not X or Y) axes.
 # Resolution is native_res_factor * sqrt(2) steps per inch in Low Resolution  (Approx 1437 steps per inch)
 #       and 2 * native_res_factor * sqrt(2) steps per inch in High Resolution (Approx 2874 steps per inch)
@@ -158,8 +160,11 @@ speed_lim_xy_lr = 15.000  # Maximum XY speed allowed when in Low Resolution mode
 speed_lim_xy_hr = 8.6979  # Maximum XY speed allowed when in High Resolution mode, in inches per second. Default: 8.6979, Max: 8.6979
 # Do not increase these values above Max; they are derived from max_step_rate and the resolution.
 
-max_step_dist_lr = 0.000696  # Maximum distance covered by 1 step in Low Res mode, rounded up, in inches. ~1/(1016 sqrt(2))
-max_step_dist_hr = 0.000348  # Maximum distance covered by 1 step in Hi Res mode, rounded up, in inches.  ~1/(2032 sqrt(2))
+#XXX change for idraw
+#max_step_dist_lr = 0.000696  # Maximum distance covered by 1 step in Low Res mode, rounded up, in inches. ~1/(1016 sqrt(2))
+#max_step_dist_hr = 0.000348  # Maximum distance covered by 1 step in Hi Res mode, rounded up, in inches.  ~1/(2032 sqrt(2))
+max_step_dist_lr = 0.000557  # Maximum distance covered by 1 step in Low Res mode, rounded up, in inches. (1.0 /(1270.0 * Math.sqrt(2)) * 1e6).round() / 1e6
+max_step_dist_hr = 0.000278  # Maximum distance covered by 1 step in Hi Res mode, rounded up, in inches.  (1.0 /(2540.0 * Math.sqrt(2)) * 1e6).round() / 1e6
 # In planning trajectories, we skip movements shorter than these distances, likely to be < 1 step.
 
 const_speed_factor_lr = 0.25  # When in constant-speed mode, multiply the pen-down speed by this factor. Default: 0.25 for Low Res mode
